@@ -2,26 +2,39 @@
 
 ## 1. git command
 ### git config
-
+1. `git config --global user.name "user.name"` : 최초 1회만, 사용자 이름 설정
+2. `git config --global user.email <user email>` : 최초 1회만, 사용자 이메일 설정
 ### git init
-
+1. 설명 : 기존 저장소를 git 저장소로 등록하기
+2. 주의사항 : git 로컬 저장소 내에 또 다른 git 로컬 저장소를 만들지 말 것
+    - git 저장소 안에 git 저장소가 있을 경우, 가장 바깥쪽의 git 저장소가 안쪽의 git 저장소의 변경사항을 추적할 수 없기 때문
+    - **추가 공부 필요** : git submodule
 ### git status
-
+1. 설명 : 파일 상태 확인하기 (cf. 하단 파일 상태 정리 문서)
 ### git add
-
+1. 설명 : 변경사항이 있는 파일을 Staging area에 추가
+2. `git add .` : 변경사항이 있는 모든 파일을 Staging area에 추가
 ### git commit
-
-### git push
-
+1. 설명 : Staging area에 있는 파일을 git 저장소에 기록, 해당 시점의 버전을 생성하고 변경 이력을 남기는 것
+2. `git commit --amend` : 마지막 commit 변경
+   * commit 메세지 수정
+   * commit 파일 수정 : Staging area에 있는 파일을 추가한 뒤 commit 가능
 ### git log
-
-### git remote add \<name> \<remote repository url>
-
-### git clone \<remote repository url>
-
-### git pull
+1. 설명 : comit 이력 조회
+### git remote
+1. `git remote -v` : 현재 local repository에 등록된 remote repository의 별칭과 URL을 확인
+2. `git remote add <name> <remote repository url>` : remote repository를 \<name>이라는 별칭으로 추가
+3. `git remote remove <name>` : 현재 로컬 저장소에 저장되었던 원격저장소 삭제
+### git clone
+1. 설명 : remote repository를 local repository로 복
+2. `git clone <remote repository url>`
 
 ### git push
+1. 설명 : remote repository에 commit을 업로드
+2. `git push <name> <branch>` : 기본 사용법
+3. `git push -u <name> <branch>` : 이후 push 시, 저장소 및 branch 지정 생략 가능
+### git pull
+1. 설명 : remote repository의 데이터를 가져온 후 local branch에 병합
 ## 2. git stages
 ### git의 3가지 영역
 1.  Working Directory
