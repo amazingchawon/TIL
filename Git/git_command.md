@@ -17,8 +17,8 @@
 ### git commit
 1. 설명 : Staging area에 있는 파일을 git 저장소에 기록, 해당 시점의 버전을 생성하고 변경 이력을 남기는 것
 2. `git commit --amend` : 마지막 commit 변경
-   * commit 메세지 수정
-   * commit 파일 수정 : Staging area에 있는 파일을 추가한 뒤 commit 가능
+   * `git commit --amend -m` : commit 메세지 수정
+   * 파일 수정 : Staging area에 있는 파일을 추가한 뒤 commit 가능
 ### git log
 1. 설명 : comit 이력 조회
 ### git remote
