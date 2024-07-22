@@ -18,8 +18,8 @@
 
 | 메서드 | 설명 |
 | --- | --- |
-| s.replace(old, new[,count] | 바꿀 대상 글자를 새로운 글자로 바꿔서 반환 |
-| s.strip([chars]) | 문자열의 시작과 끝에 있는 공백이나 지정한 문자를 제거 |
+| s.replace(old, new, [count]) | 바꿀 대상 글자를 새로운 글자로 바꿔서 반환 |
+| s.strip([chars]) | 문자열의 시작과 끝에 있는 공백이나 지정한 문자를 제거 *중간에 있는 문자는 제거 불가 |
 | s.split(sep=None, maxsplit=-1) | 공백이나 특정 문자를 기준으로 분리하여 문자열 리스트로 반환 |
 | ‘separator’.join(iterable) | 구분자로 iterable의 문자열을 연결한 문자열 반환 |
 | s.capitalize() | 문자열의 첫글자는 대문자로, 나머지는 소문자로 바꿔서 반환 |
