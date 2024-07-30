@@ -18,6 +18,8 @@
     - 교환하며 자리를 이동하는 모습이 물 위에 올라오는 거품 모양과 같다고 하여 버블 정렬이라고 한다.
 3. 시간 복잡도 : O(n^2)
 4. 그림으로 이해하기
+    </br>
+    ![버블정렬](https://favtutor.com/resources/images/uploads/mceu_61632030011682402256084.png)
 5. Pseudocode
 6. 구현
     
@@ -36,4 +38,40 @@
                 if a[j] > a[j+1] :
                     a[j], a[j+1] = a[j+1], a[j]
     ``` 
+
+## 카운팅 정렬 Counting Sort
+
+1. 정의 : 항목들의 순서를 결정하기 위해 집합에 각 항목이 몇 개씩 있는지 세는 작업을 하여, 선형 시간에 정렬하는 효율적인 알고리즘
+2. 제한 사항 :
+    - 정수나 정수로 표현할 수 잇는 자료에 대해서만 적용 가능 : 각 항목의 발생 회수를 기록하기 위해, 정수 항목으로 인덱스 되는 카운트들의 배열을 사용하기 때문
+    - 카운트들을 위한 충분한 공간을 할당하려면 집합 내의 가장 큰 정수를 알아야 함
+3. 시간 복잡도 :
+    - O(n+k) : n은 리스트 길이, k는 정수의 최대 값 (k가 백만 이하일때 카운팅 정렬 사용)
+4. 절차 :
+    </br>
+    ![정렬할 배열](https://static.javatpoint.com/ds/images/counting-sort.png)
+    - step 1 : 주어진 배열의 최대값(이하 max) 찾기
+    ![step 1](https://static.javatpoint.com/ds/images/counting-sort2.png)
+    - step 2 : 길이가  max+1인 countArray[] 생성 (값은 0으로 초기화)
+    ![step 2](https://static.javatpoint.com/ds/images/counting-sort3.png)
+        - countArray[] : 정렬할 배열에서 값의 등장 횟수를 저장할 array
     
+    - step 3 : 정렬할 배열의 값을 인덱스로 사용하여 countArray에 접근하여 값 등장 횟수 증가
+    ![step 3](https://static.javatpoint.com/ds/images/counting-sort4.png)
+    - step 4 : countArray의 인덱스 값을 앞 인덱스 값을 누적하여 저장![step 4-1](https://static.javatpoint.com/ds/images/counting-sort7.png)
+    ![step 4-2](https://static.javatpoint.com/ds/images/counting-sort8.png)
+        - 정렬할 배열의 위치를 정하기 위함
+    
+    - step 5 : 정렬할 배열의 끝부터 순회 → countArray를 참고해서 순회
+    ![step 5](https://static.javatpoint.com/ds/images/counting-sort10.png)
+
+5. (step5) 뒤에서부터 정렬하는 이유 → 안정성을 위해
+    - 앞에서부터 정렬할 때의 문제 : 주어진 배열에서의 순서가 뒤바뀌게 됨 (1이 arr[0], arr[4], arr[5]에 있다고 가정 → 정렬 후 배열에는 arr[5], arr[4], arr[0] 순으로 정렬된다)
+    - (cf) 안정정렬
+
+## 정렬 알고리즘 비교
+
+| 알고리즘 | 평균 수행시간 | 최악 수행시간 | 알고리즘 기법 | 비고 |
+| --- | --- | --- | --- | --- |
+| 버블 정렬 | O(n^2) | O(n^2) | 비교와 교환 | 가장 손쉬운 코딩 |
+| 카운팅 정렬 | O(n+k) | O(n+k) | 비교환 방식 | n이 비교적 작을 때만 가능 |
