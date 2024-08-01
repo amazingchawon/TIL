@@ -64,26 +64,26 @@
     - 주의(필수) : 배열을 탐색할때, 배열을 넘지 않는지 확인하는 코드가 먼저 오게 하기!
         - `while i<n and a[i]<key`
     
-    ## 이진 검색 Binary Search
-    
-    1. 정의 : 자료의 가운데 있는 항목의 키 값과 비교하여 다음 검색의 위치를 결정하고 검색을 계속 진행하는 방법
-    2. 특징 : 
-        - 목적 키를 찾을 때까지 이진 검색을 순환적으로 반복 수행함으로써 검색 범위를 반으로 줄여가면서 보다 빠르게 검색을 수행함
-        - 이진 검색을 하기 위해서는 자료가 **정렬**된 상태여야 함
-    3. 구현 예
-        ```python
-        # while 문 사용
+## 이진 검색 Binary Search
 
-        def binary_search (arr, n, key) :
-            start = 0 # 시작 원소
-            end = n-1 # 마지막 원소
-            while start <= end :
-                mid = (start + end) // 2 # 몫만 계산
-                if arr[mid] == key: # 검색 성공
-                    return True
-                elif arr[mid] > key : # 배열 중간 값이 더 클 경우
-                    end = mid -1 # mid 앞 부분 검색
-                else : # 배열 중간 값이 더 작은 경우
-                    start = mid + 1 # mid 뒷 부분 검색
-            return False # 검색 실패
-        ```
+1. 정의 : 자료의 가운데 있는 항목의 키 값과 비교하여 다음 검색의 위치를 결정하고 검색을 계속 진행하는 방법
+2. 특징 : 
+    - 목적 키를 찾을 때까지 이진 검색을 순환적으로 반복 수행함으로써 검색 범위를 반으로 줄여가면서 보다 빠르게 검색을 수행함
+    - 이진 검색을 하기 위해서는 자료가 **정렬**된 상태여야 함
+3. 구현 예
+    ```python
+    # while 문 사용
+
+    def binary_search (arr, n, key) :
+        start = 0 # 시작 원소
+        end = n-1 # 마지막 원소
+        while start <= end :
+            mid = (start + end) // 2 # 몫만 계산
+            if arr[mid] == key: # 검색 성공
+                return True
+            elif arr[mid] > key : # 배열 중간 값이 더 클 경우
+                end = mid -1 # mid 앞 부분 검색
+            else : # 배열 중간 값이 더 작은 경우
+                start = mid + 1 # mid 뒷 부분 검색
+        return False # 검색 실패
+    ```
