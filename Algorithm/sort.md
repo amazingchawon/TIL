@@ -70,9 +70,45 @@
     - 앞에서부터 정렬할 때의 문제 : 주어진 배열에서의 순서가 뒤바뀌게 됨 (1이 arr[0], arr[4], arr[5]에 있다고 가정 → 정렬 후 배열에는 arr[5], arr[4], arr[0] 순으로 정렬된다)
     - (cf) 안정정렬
 
+
+## 선택 정렬 Selection Sort
+
+1. 정의 : 주어진 자료들 중 가장 작은 값의 원소부터 차례대로 선택하여 위치를 교환하는 방식
+2. 정렬 과정 (오름차순 정렬) :
+    - 주어진 리스트 중에서 최솟값 찾기
+    - 그 값을 리스트의 맨 앞에서 위치한 값과 교환
+    - 맨 처음 위치를 제외한 나머지 리스트를 대상으로 위 과정 반복
+3. 시간 복잡도 : O(n^2)
+4. 구현
+    
+    ```python
+    def selection_sort(arr) :
+    	for i in range(len(arr)-1) : # 기준 위치
+    		min_idx = i # 현재 구간의 맨 앞을 최소로 가정
+    		for j in range(i+1, len(arr)) # 비교 구간
+    			if arr[min_idx] > a[j] :
+    				min_idx = j
+    			a[i], a[min_idx] = a[min_idx], a[i]
+    	return arr
+    ```
+    
+5. 활용 : k번째로 작은 원소를 찾는 알고리즘
+    
+    ```python
+    def select(arr, k) :
+    	for i in range(k) :
+    		min_idx = i # 현재 구간의 맨 앞을 최소로 가정
+    		for j in range(i+1, len(arr)) # 비교 구간
+    			if arr[min_idx] > a[j] :
+    				min_idx = j
+    			a[i], a[min_idx] = a[min_idx], a[i]
+    	return arr[k-1]
+    ```
+    
 ## 정렬 알고리즘 비교
 
 | 알고리즘 | 평균 수행시간 | 최악 수행시간 | 알고리즘 기법 | 비고 |
 | --- | --- | --- | --- | --- |
 | 버블 정렬 | O(n^2) | O(n^2) | 비교와 교환 | 가장 손쉬운 코딩 |
 | 카운팅 정렬 | O(n+k) | O(n+k) | 비교환 방식 | n이 비교적 작을 때만 가능 |
+| 선택 정렬  | O(n^2) | O(n^2) | 비교와 교환 | 교환의 회수가 버블, 삽입정렬보다 작음 |
