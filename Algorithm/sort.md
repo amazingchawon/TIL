@@ -43,7 +43,7 @@
 
 1. 정의 : 항목들의 순서를 결정하기 위해 집합에 각 항목이 몇 개씩 있는지 세는 작업을 하여, 선형 시간에 정렬하는 효율적인 알고리즘
 2. 제한 사항 :
-    - 정수나 정수로 표현할 수 잇는 자료에 대해서만 적용 가능 : 각 항목의 발생 회수를 기록하기 위해, 정수 항목으로 인덱스 되는 카운트들의 배열을 사용하기 때문
+    - 정수나 정수로 표현할 수 있는 자료에 대해서만 적용 가능 : 각 항목의 발생 회수를 기록하기 위해, 정수 항목으로 인덱스 되는 카운트들의 배열을 사용하기 때문
     - 카운트들을 위한 충분한 공간을 할당하려면 집합 내의 가장 큰 정수를 알아야 함
 3. 시간 복잡도 :
     - O(n+k) : n은 리스트 길이, k는 정수의 최대 값 (k가 백만 이하일때 카운팅 정렬 사용)
@@ -59,7 +59,7 @@
     - step 3 : 정렬할 배열의 값을 인덱스로 사용하여 countArray에 접근하여 값 등장 횟수 증가
     </br>![step 3](https://static.javatpoint.com/ds/images/counting-sort4.png)
     - step 4 : countArray의 인덱스 값을 앞 인덱스 값을 누적하여 저장!
-    </br>[step 4-1](https://static.javatpoint.com/ds/images/counting-sort7.png)
+    </br>![step 4-1](https://static.javatpoint.com/ds/images/counting-sort7.png)
     </br>![step 4-2](https://static.javatpoint.com/ds/images/counting-sort8.png)
         - 정렬할 배열의 위치를 정하기 위함
     
@@ -69,7 +69,34 @@
 5. (step5) 뒤에서부터 정렬하는 이유 → 안정성을 위해
     - 앞에서부터 정렬할 때의 문제 : 주어진 배열에서의 순서가 뒤바뀌게 됨 (1이 arr[0], arr[4], arr[5]에 있다고 가정 → 정렬 후 배열에는 arr[5], arr[4], arr[0] 순으로 정렬된다)
     - (cf) 안정정렬
+6. 구현
+    ```python
+    def counting_sort(arr, k):
+        """
+        input_arr : 입력 배열 (0 -> K)
+        counting_arr : 카운팅 배열
+        k는 데이터 개수가 아닌, 데이터 원소 범위
 
+        """
+        # 1. 새 배열에 arr 내 원소 빈도수 담기
+        counting_arr = [0]*(k+1) # k번째 index가 필요하니 +1
+        for i in arr:
+            counting_arr[i] += 1
+        
+        # 2. counting_arr 누적합
+        for i in range(1, len(counting_arr)):
+            counting_arr[i] = counting_arr[i-1]
+        
+        # 3. counting_arr 내 기록되어있는 원소 빈도수를 바탕으로 새로운 배열에 정렬
+        # 현재 불안정정렬 상태로 정렬됨
+        # 안정 정렬로 정렬하고 싶다면 for문 변경 -> for i in ragne(len(result)-1, -1, -1)
+        result = [-1] * len(arr)
+        for i in arr:
+            counting_arr[i] -= 1
+            result[counting_arr[i]] = i
+        
+        return result
+    ```
 
 ## 선택 정렬 Selection Sort
 
@@ -88,7 +115,7 @@
     		for j in range(i+1, len(arr)) # 비교 구간
     			if arr[min_idx] > a[j] :
     				min_idx = j
-    			a[i], a[min_idx] = a[min_idx], a[i]
+            a[i], a[min_idx] = a[min_idx], a[i]
     	return arr
     ```
     
@@ -101,7 +128,7 @@
     		for j in range(i+1, len(arr)) # 비교 구간
     			if arr[min_idx] > a[j] :
     				min_idx = j
-    			a[i], a[min_idx] = a[min_idx], a[i]
+            a[i], a[min_idx] = a[min_idx], a[i]
     	return arr[k-1]
     ```
     
