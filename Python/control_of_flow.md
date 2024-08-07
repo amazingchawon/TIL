@@ -76,7 +76,17 @@
     Bd
     '''
     ```
-    
+
+7. for - else
+   `for` loop에서 `else` keyword는 loop이 break에 걸리지 않고 완전히 끝났을떄 실행
+   ```python
+    for x in range(6):
+        if x == 3:
+            break
+        print(x)
+    else:
+        print('finally finished')   # 0 1 2 만 출력되고 이 문장은 출력되지 않음
+    ```
 
 ## while statement
 
