@@ -70,7 +70,14 @@
 2. 특징 : 
     - 목적 키를 찾을 때까지 이진 검색을 순환적으로 반복 수행함으로써 검색 범위를 반으로 줄여가면서 보다 빠르게 검색을 수행함
     - 이진 검색을 하기 위해서는 자료가 **정렬**된 상태여야 함
-3. 구현 예
+3. 단계 : 
+    - 자료의 중앙에 있는 원소 고르기
+    - 중앙 원소의 값과 찾고자 하는 목표 값을 비교
+    - 목표 값이 중앙 원소 값보다 작으면 자료의 왼쪽 반에 대해서 새로 검색을 수행, 크다면 자료의 오른쪽 반에 대하여 새로 검색 수행
+    - 찾고자 하는 값을 찾을 때까지 과정 반복
+4. 시간 복잡도 : O(logN)
+5. 구현 :
+    - 반복 구조 :
     ```python
     # while 문 사용
 
@@ -87,3 +94,22 @@
                 start = mid + 1 # mid 뒷 부분 검색
         return False # 검색 실패
     ```
+    - 재귀 구조 :
+    ```python
+    def binary_search(arr, low, high, key):
+        if low > high
+            return -1
+        else:
+            mid = (low + high) // 2
+            if key == arr[mid]:
+                return mid
+            elif key < arr[mid] :
+                return binary_search(arr, low, mid-1, key)
+            else:
+                return binary_search(arr, mid+1, high, key)
+    ```
+6. 활용
+    - parametric search : 정렬된 데이터를 기준으로 특정 값이나 범위를 검색하는 데 사용
+    - Lower Bound, upper Bound :
+        - 정렬된 배열에서 특정 값 이상(이하)가 처음으로 나타나는 위치를 찾는 알고리즘
+        - 특정 데이터의 범위 검색 등에 활용
