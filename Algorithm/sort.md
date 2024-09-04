@@ -5,9 +5,9 @@
     - 버블 정렬 Bubble Sort
     - 카운팅 정렬 Counting Sort
     - 선택 정렬 Selection Sort
+    - 병합 정렬 Merge Sort
     - 퀵 정렬 Quick Sort
     - 삽입 정렬 Insertion Sort
-    - 병합 정렬 Merge Sort
 
 ## 버블 정렬 Bubble Sort
 
@@ -131,6 +131,133 @@
             a[i], a[min_idx] = a[min_idx], a[i]
     	return arr[k-1]
     ```
+
+## 병합 정렬 Merge Sort
+
+1. 정의 : 여러 개의 정렬된 자료의 집합을 병합하여 한 개의 정렬된 집합으로 만드는 방식
+2. 정렬 과정 :
+    
+    ![병합 정렬](https://media.geeksforgeeks.org/wp-content/uploads/20230706153706/Merge-Sort-Algorithm-(1).png)
+    
+    - 분할 : 전체 자료 집합에 대하여, 최소 크기의 부분집합이 될 때까지 분할 작업을 계속 함
+        - logN
+    - 병합 : 2개의 부분집합을 정렬하면서 하나의 집합으로 병합
+        - 병합하는 과정에서 모든 원소를 비교 → N
+3. 시간 복잡도 : O(NlogN)
+4. 구현 :
+    
+    ```python
+    # 분할 과정
+    def merge_sort(m):
+        # 리스트의 길이가 1이면 이미 정렬된 상태이므로 그대로 반환
+        if len(m) == 1:
+            return m
+    
+        # 리스트를 절반으로 나누기 위해 중간 인덱스를 계산
+        mid = len(m) // 2
+        left = m[:mid]  # 리스트의 앞쪽 절반
+        right = m[mid:]  # 리스트의 뒤쪽 절반
+    
+        # 재귀적으로 왼쪽 부분과 오른쪽 부분을 정렬
+        left = merge_sort(left)
+        right = merge_sort(right)
+    
+        # 두 개의 정렬된 리스트를 병합하여 반환
+        return merge(left, right)
+    
+    # 병합 과정
+    def merge(left, right):
+        # 두 리스트를 병합할 결과 리스트를 초기화
+        result = [0] * (len(left) + len(right))
+        l = r = 0  # 왼쪽 리스트와 오른쪽 리스트의 인덱스
+    
+        # 두 리스트를 순차적으로 비교하여 작은 값을 결과 리스트에 추가
+        while l < len(left) and r < len(right):
+            if left[l] < right[r]:
+                result[l + r] = left[l]
+                l += 1
+            else:
+                result[l + r] = right[r]
+                r += 1
+    
+        # 왼쪽 리스트에 남은 요소들을 결과 리스트에 추가
+        while l < len(left):
+            result[l + r] = left[l]
+            l += 1
+    
+        # 오른쪽 리스트에 남은 요소들을 결과 리스트에 추가
+        while r < len(right):
+            result[l + r] = right[r]
+            r += 1
+    
+        # 병합된 결과 리스트를 반환
+        return result
+    ```
+    
+
+## 퀵 정렬 Quick sort
+
+1. 정의 : 주어진 배열을 두 개로 분할하고, 각각을 정렬. 이 과정에서 Partitioning 반복
+    - 퀵 정렬과 삽입 정렬의 차이
+    
+    | 삽입 정렬 | 퀵 정렬 |
+    | --- | --- |
+    | 두 부분으로 분할 | 기준 아이템(pivot item)을 중심으로 분할 |
+    | 병합 작업 필요 | 병합 작업 필요 X |
+2. Partitioning
+    
+    ![파티셔닝](https://media.geeksforgeeks.org/wp-content/uploads/20231219164812/Quick-Sort-Algorithm.png)
+    
+    - 단계:
+        - 작업 영역 정하기
+        - 작업 영역 중 가장 왼쪽에 있는 수를 Pivot이라고 설정 (Pivot을 기준으로 해석)
+            - 이 때 Pivot을 어떤 값으로 설정하냐에 따라 작업의 성능이 크게 차이남
+                - 맨 왼쪽 / 오른쪽
+                    - 구현 간단
+                    - 정렬 되어있을 경우 성능 최악 : O(n^2)
+                        - 왼쪽의 경우, 역순 정렬
+                - 중앙값/ 중간값 등 여러 기준이 있음
+        - Pivot을 기준으로 왼쪽에는 Pivot보다 작은 수, 오른쪽에는 Pivot보다 큰 수를 배치(정렬 X)
+    - 특징
+        - Partitioning이 끝나고 Pivot의 위치는 확정
+    - Partition의 위치
+        - Hoare partition
+        - Lomuto partition
+            - Pivot 위치 : 맨 우측
+3. 시간 복잡도 : 평균적으로 O(NlogN)
+    - Partitioning : N
+    - 분할작업 : logN
+    - 최악의 경우 : O(N^2)
+        - 분할작업이 N번 걸리는 경우
+4. 구현
+    
+    ```python
+    # 피벗: 제일 왼쪽 요소
+    # 이미 정렬된 배열이나 역순으로 정렬된 배열에서 최악의 성능을 보일 수 있음
+    def hoare_partition1(left, right):
+        pivot = arr[left]  # 피벗을 제일 왼쪽 요소로 설정
+        i = left + 1
+        j = right
+    
+        while i <= j:
+            while i <= j and arr[i] <= pivot:
+                i += 1
+    
+            while i <= j and arr[j] >= pivot:
+                j -= 1
+    
+            if i < j:
+                arr[i], arr[j] = arr[j], arr[i]
+    
+        arr[left], arr[j] = arr[j], arr[left]
+        return j
+    
+    def quick_sort(left, right):
+        if left < right:
+            pivot = hoare_partition1(left, right)
+            quick_sort(left, pivot - 1)
+            quick_sort(pivot + 1, right)
+    ```
     
 ## 정렬 알고리즘 비교
 
@@ -139,3 +266,5 @@
 | 버블 정렬 | O(n^2) | O(n^2) | 비교와 교환 | 가장 손쉬운 코딩 |
 | 카운팅 정렬 | O(n+k) | O(n+k) | 비교환 방식 | n이 비교적 작을 때만 가능 |
 | 선택 정렬  | O(n^2) | O(n^2) | 비교와 교환 | 교환의 회수가 버블, 삽입정렬보다 작음 |
+| 병합 정렬  | O(nlogn) | O(nlogn) | 분할 정복 | 외부 정렬(External Sort)의 기본이 되는 정렬 알고리즘, 멀티코어 CPU나 다수의 프로세서에서 정렬 알고리즘을 병렬화하기 위해 사용 |
+| 퀵 정렬  | O(nlogn) | O(n^2) | 비교와 교환 | 매우 큰 입력 데이터에 대해서 좋은 성능을 보이는 알고리즘 |
