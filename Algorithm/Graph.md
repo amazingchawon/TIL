@@ -50,29 +50,35 @@
 4. 인접 리스트
 
 ## 그래프 알고리즘
-
-### 탐색 알고리즘
-
+### 탐색
 1. 정의 : 비선형구조인 그래프로 표현된 모든 자료(정점)를 빠짐없이 탐색하는 것
 2. 종류
-    - DFS : 깊이 우선 탐색
+    - [DFS](https://github.com/amazingchawon/TIL/blob/master/Algorithm/DFS.md) : 깊이 우선 탐색
         - 문제 키워드 : 끝까지 전달을 해봐야 한다
-    - BFS : 너비 우선 탐색
+    - [BFS](https://github.com/amazingchawon/TIL/blob/master/Algorithm/BFS.md) : 너비 우선 탐색
         - 문제 키워드 : 퍼져나가면서 해결
 
-### DFS
+### [Union-Find (Disjoint set)](https://github.com/amazingchawon/TIL/blob/master/Algorithm/Union-Find.md)
 
-1. 정의 : 시작 정점의 한 방향으로 갈 수 있는 경로가 있는 곳까지 깊이 탐색해 가다가 더 이상 갈 곳이 없게 되면, 가장 마지막에서 만났던 갈림길 간선이 있는 정점으로 되돌아와서 다른 방향의 정점으로 탐색을 계속 반복하여 결국 모든 정점을 방문하는 순회 방법
-2. 구현 :
-    - Stack
-    - 재귀
+### [최소 비용](https://github.com/amazingchawon/TIL/blob/master/Algorithm/MST.md)
+1. 그래프에서 최소 비용 문제 해결법
+    - 모든 정점을 연결하는 간선들의 가중치 합이 최소가 되는 트리 (신장 트리)
+    - 두 정점 사이의 최소 비용의 경로 찾기
+2. 종류
+   - Prim 알고리즘
+     - 그리디 방식으로 접근
+     - 정점 기준
+   - Kruskal 알고리즘
+     - 그리디 방식으로 접근
+     - 간선 기준
 
-### BFS
-
-1. 정의 : 탐색 시작점의 인접한 정점들을 먼저 모두 차례로 방문한 후에, 방문했던 정점을 시작점으로 하여 다시 인접한 정점들을 차례로 방문하는 방식
-2. 구현:
-    - 큐
-
-### 그외
-
-### Union-Find (Disjoint set)
+## 최단 경로
+1. 최단 경로 정의 : 간선의 가중치가 있는 그래프에서 두 정점 사이의 경로들 중에 간선의 가중치의 합이 최소인 경로
+2. 종류 :
+   - 하나의 시작 정점에서 끝 정점까지의 최단 경로
+      - [다익스트라(dijkstra) 알고리즘](https://github.com/amazingchawon/TIL/blob/master/Algorithm/Dijkstra.md)
+          - 음의 가중치를 허용하지 않음
+      - 벨만-포드 (Bellan-Ford) 알고리즘
+          - 음의 가중치 허용
+   - 모든 정점들에 대한 최단 경로
+      - 플로이드-워샬(Floyd-Warshall) 알고리즘
