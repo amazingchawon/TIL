@@ -68,9 +68,9 @@
         	# 다른 집합이라면 더 작은 루트노트에 합친다
         	# 문제에 따라 다르게 합칠 수 있음
         	if root_x < root_y:
-        		parents[y] = root_x
+        		parents[root_y] = root_x
         	else:
-        		parents[x] = root_y
+        		parents[root_x] = root_y
         ```
         
 4. 문제점 / 해결방법
