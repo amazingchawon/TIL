@@ -9,10 +9,13 @@
 1. 현재 URL 관리의 문제점
     - 템플릿의 많은 부분이 중복되고, URL의 일부만 변경되는 상황이라면 계속해서 비슷한 URL과 템플릿을 작성해나가야 할까?
 2. 정의 : URL 일부에 변수를 포함시키는 것, 변수는 view 함수의 인자로 전달 가능
-3. 작성법:
+3. `urls.py` 작성법:
     - `<path_converter:variable_name>`
     - path converter : URL 변수의 타입을 지정 (str, int 등 5가지 타입 지원)
-
+4. `views.py` 작성법:
+    ```python
+    def 함수이름(request, variable_name):
+    ```
 ## App과 URL
 
 1. App URL mapping
