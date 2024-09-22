@@ -66,7 +66,7 @@
 2. Migrations 과정
     - model class(스케치) 만들기 →(makemigrations)→ migration 파일(최종 설계도) →migrate→ DB
     - Migrations 핵심 명령어
-        
+    
         ```bash
         python manage.py makemigrations
         ```
@@ -78,6 +78,19 @@
         ```
         
         - 최종 설계도를 DB에 전달하여 반영
+        
+        ```bash
+        python manage.py showmigrations
+        ```
+        
+        - migrations 파일들이 migrate 됐는지 안됐는지 여부를 확인하는 명령어
+        - [X]표시가 있으면 migrate 완료되었음을 의미
+        
+        ```bash
+        python manage.py sqlmigrate articles 0001
+        ```
+        
+        - 해당 migrations 파일이 SQL언어(DB에서 사용하는 언어)로 어떻게 번역되어 DB에 전달되는지 확인하는 명령어
 3. 추가 migrations
     - model class 변경사항(1)이 생겼다면, 반드시 새로운 설계도를 생성(2)하고, 이를 DB에 반영(3) 해야 함
     - (1) model class 변경
