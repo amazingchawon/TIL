@@ -22,7 +22,7 @@
 
 ## QuerySet API
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/5025afe3-ff24-484f-a82f-3c1335a6b1cd/d6ecb269-ad18-4a0b-a815-424f0e6e5baa/image.png)
+![image.png](https://soshace.com/wp-content/uploads/2023/03/orm-1024.jpg)
 
 1. 설명:
     - ORM에서 데이터를 검색, 필터링, 정렬 및 그룹화 하는 데 사용하는 도구
@@ -36,7 +36,7 @@
     pip install ipython django-extensions
     ```
     
-    - django-extensions → 프로젝트의 `settings.py` 에 `INSTALLED_APPS` 에 추가해주어야 함
+    - django_extensions → 프로젝트의 `settings.py` 에 `INSTALLED_APPS` 에 추가해주어야 함
 3. Django shell
     
     ```bash
