@@ -42,7 +42,71 @@ HTTP 요청을 서버에 보내는 가장 편리한 방법
         https://search.naver.com/search.naver -> URL
         ?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=검색어 -> query string parameter
         ```
-        
+
+## form 활용 : 사용자 입력 데이터를 받아 그대로 출력하는 서버 만들기
+
+### thorw 로직
+
+```python
+# urls.py
+
+urlpatterns = [
+	path('throw/', views.throw),
+]
+```
+
+```python
+# views.py
+
+def throw(request):
+	return render(request, 'articles/throw.html')
+```
+
+```html
+<!-- articles/throw.html -->
+
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<h1>Throw</h1>
+<form action='/catch/' method='GET'>
+	<input type='text' id='message' name='message'>
+	<input type='submit'>
+</form>
+{% endblock content %}
+```
+
+### catch 로직
+
+```python
+# urls.py
+
+urlpatterns = [
+	path('catch/', views.catch),
+]
+```
+
+```python
+# views.py
+
+def throw(request):
+	message = request.GET.get('message')
+	context = {
+		'message' : message,
+	}
+	return render(request, 'articles/catch.html', context)
+```
+
+```html
+<!-- articles/catch.html -->
+
+{% extends 'articles/base.html' %}
+
+{% block content %}
+<h1>Catch</h1>
+<h3>{{ message }}를 받았습니다!</h3>
+{% endblock content %}
+```
 
 ## HTTP request 객체
 
