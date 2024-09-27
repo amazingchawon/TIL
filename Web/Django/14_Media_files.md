@@ -90,22 +90,23 @@
     - view 함수에서 업로드 파일에대한 추가 코드 작성 (request.FILES)
 2. 코드
     ```html
-    <!-- articles/create.html -->
+    <!-- articles/update.html -->
 
     <h1>CREATE</h1>
-    <form action="{% url 'articles:create%}" method="POST" enctype="multipart/form-data">
+    <form action="{% url 'articles:update%}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p}}
         <input type="submit">
     </form>
     ```
+
     ```python
     # articles/views.py
 
     def create(request):
-        if request.method == 'POST'L
-            form = ArticleForm(request.POST, request.FILES)
-        ```
+        if request.method == 'POST':
+            form = ArticleForm(request.POST, request.FILES, instance=article)
+    ```
 ## Media 파일 추가 경로
 
 1. `upload_to` argument : `ImageField()`의 upload_to 속성을 사용하여 다양한 추가 경로 설정
