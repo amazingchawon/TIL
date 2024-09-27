@@ -79,10 +79,11 @@
 ### Form rendering opitons
 
 1. `(form객체).as_태그`
-    - `as_p` : <p> 태그로 감싸서 render
-    - `as_div` : <div> 태그로 감싸서 render
-    - `as_table` : <table> 태그로 감싸서 render
-    - `as_ul` : <ul> 태그로 감싸서 render
+    - `as_p` : \<p> 태그로 감싸서 render
+    - `as_div` : \<div> 태그로 감싸서 render
+    - `as_table` : \<table> 태그로 감싸서 render
+    - `as_ul` : \<ul> 태그로 감싸서 render
+
 
 ## Widgets
 
