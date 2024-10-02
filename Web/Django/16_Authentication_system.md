@@ -1,16 +1,9 @@
 # Django Authentication System
 
 1. 정의 : 사용자 인증과 관련된 기능을 모아 놓은 시스템
-2. Authentication 인증
+2. 인증 Authentication 
     - 권한과 헷갈리지 말기
     - 사용자가 자신이 누구인지 확인하는 것, 신원 확인
-
-## 실습
-
-- urls.py 를 앱안에 만들었을 때→ 처음에는 urlpatterns 리스트가 비어있어서 이걸 아예 안 작성하는 경우가 있음 → 이러면 애러가 남
-- custom user model로 대체
-- 기존 마이그레이션 파일, 데이터 베이스 지우기
-- 수퍼유저 생성
 
 # Custom User model
 
@@ -92,9 +85,9 @@
     - GET : 로그인 페이지 응답
     - POST : 인증/로그인 진행
 
-## AuthenticationForm()
+## `AuthenticationForm()`
 
-1. 설명 : 로그인 인증에 사용할 데이터를 입력 받는 built-in form
+1. 설명 : 로그인 인증에 사용할 데이터를 입력 받는 **built-in form**
     - ModelForm이 아닌, Form
         - 이유 : 로그인 할 때 입력하는 아이디, 비밀번호 → 저장 X, 단지 인증 수단일 뿐
         - DB로 저장하는 것이 아니기 때문에 Form을 사용
@@ -105,6 +98,8 @@
 1. `urls.py`
     
     ```python
+    # accouns/urls.py
+
     from django.urls import path
     from . import views
     
@@ -117,6 +112,8 @@
 2. `view`
     
     ```python
+    # accounts/views.py
+
     from django.shortcuts import render, redirect
     from django.contrib.auth.forms import AuthenticationForm
     from django.contrib.auth import login as auth_login
@@ -147,7 +144,17 @@
         - 로그인 == 세션 데이터 생성
     - `get_user()` : AuthenticationForm의 인스턴스 메서드
         - 유효성 검사를 통과했을 경우, 로그인 한 사용자 객체를 반환
-3. Login 성공했는지 알아보는 법
+3. Template
+   ```HTML
+   <!-- accounts/login-html --->
+   <h1>로그인</h1>
+   <form action="{% url 'accounts:login' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit">
+    </form>
+    ```
+4. Login 성공했는지 알아보는 법
     - 방법 1 : 개발자 도구를 사용해서 cookie에 session id가 있으면 성공
     - 방법 2 : django_session 테이블에서 확인
 
