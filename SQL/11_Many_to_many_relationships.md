@@ -328,7 +328,7 @@
     
 3. 에러 : migration 진행 후 에러 발생
     
-    ```python
+    ```bash
     articles.Article.like_users: (fields.E304) Reverse accessor 'User.article_set' for 'articles.Article.like_users' clashes with reverse accessor for 'articles.Article.user'.
             HINT: Add or change a related_name argument to the definition for 'articles.Article.like_users' or 'articles.Article.user'.
     articles.Article.user: (fields.E304) Reverse accessor 'User.article_set' for 'articles.Article.user' clashes with reverse accessor for 'articles.Article.like_users'.
@@ -401,7 +401,7 @@
     
 3. template
     
-    ```python
+    ```HTML
     <!-- articles/index.html -->
     
     {% for article in articles %}
