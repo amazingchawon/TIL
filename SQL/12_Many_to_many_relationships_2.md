@@ -157,7 +157,7 @@
     
 4. 팔로잉 수 표시
     
-    ```python
+    ```HTML
     <!-- accounts/profile.html -->
     <div>
     	팔로잉 : {{ person.followings.all|length}} / 팔로워 : {{ person.followers.all|length }}
