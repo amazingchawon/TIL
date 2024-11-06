@@ -14,18 +14,18 @@
 ## SFC 구성요소
 
 1. 언어블록
-    - 각 *.vue 파일은 세가지 유형의 최상위 언어블록 <template>, <script>, <style>로 구성됨
+    - 각 *.vue 파일은 세가지 유형의 최상위 언어블록 `<template>, <script>, <style>`로 구성됨
     - 언어 블록의 작성 순서는 상관 없음
         - 일반적으로 template → script → stype 순서로 작성
 2. `<template>` 블록
     - 각 vue 파일은 최상위 template 블록을 하나만 포함 가능
 3. `<script setup>` 블록
     - 각 vue 파일은 `<script setup>` 블럭을 하나만 포함할 수 있음
-        - 일반 <script>는 제외
+        - 일반 `<script>`는 제외
     - 컴포넌트의 setup() 함수로 사용되며 컴포넌트의 각 인스턴스에 대해 실행
     - 변수 및 함수는 동일한 컴포넌트의 템플릿에서 자동으로 사용 가능
 4. `<style scoped>` 블록
-    - vue 파일에는 여러 <style> 태그가 포함될 수 있음
+    - vue 파일에는 여러 `<style>` 태그가 포함될 수 있음
     - scoped가 지정되면 CSS는 현재 컴포넌트에만 적용됨
         - 부모 컴포넌트의 스타일이 자식 컴포넌트로 유출되지 않음
         - 자식 컴포넌트의 최상위 요소는 부모 CSS와 본인 CSS 모두에게서 영향을 받음
@@ -34,6 +34,7 @@
 5. 컴포넌트 사용하기
     - Vue SFC는 일반적인 방법으로 실행할 수 없으며 컴파일러를 통해 컴파일 된 후 빌드 되어야 함
     - Vite와 같은 공식 빌드 도구를 사용
+
 
 # SFC build tool
 
@@ -233,7 +234,7 @@
     - 웹 애플리케이션의 성능을 향상 시키기 위한 Vue의 내부 렌더링 기술
 2. 내부 렌더링 과정
     
-    https://vuejs.org/assets/render-pipeline.CwxnH_lZ.png
+    ![내부 렌더링](https://vuejs.org/assets/render-pipeline.CwxnH_lZ.png)
     
     - 템플릿
     - 렌더 함수 코드
