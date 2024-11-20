@@ -36,6 +36,8 @@
 3. `git push -u <name> <branch>` : 이후 push 시, 저장소 및 branch 지정 생략 가능
 ### git pull
 1. 설명 : remote repository의 데이터를 가져온 후 local branch에 병합
+### git remote update
+1. 설명 : 원격 브랜치에 접근하기 위해 git remote를 갱신
 ## 2. git stages
 ### git의 3가지 영역
 1.  Working Directory
