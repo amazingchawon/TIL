@@ -4,6 +4,7 @@
 ### git config
 1. `git config --global user.name "user.name"` : 최초 1회만, 사용자 이름 설정
 2. `git config --global user.email <user email>` : 최초 1회만, 사용자 이메일 설정
+3. `git config --global commit.template .gitmessage.txt` : commit 템플릿 설정
 ### git init
 1. 설명 : 기존 저장소를 git 저장소로 등록하기
 2. 주의사항 : git 로컬 저장소 내에 또 다른 git 로컬 저장소를 만들지 말 것
