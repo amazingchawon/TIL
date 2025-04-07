@@ -62,13 +62,20 @@ S = [[0] * N for _ in range(N)]
 
 for x in range(N):
     for y in range(N):
-        S[x][y] = arr[x][y]
+        S[x][y] = arr[x][y]  # 현재 위치 값부터 시작
+
+        # 위쪽에서 내려온 누적합 추가
         if x > 0:
             S[x][y] += S[x-1][y]
+
+        # 왼쪽에서 누적합 추가
         if y > 0:
             S[x][y] += S[x][y-1]
+
+        # 위 + 왼쪽이 겹치는 부분을 중복 제거
         if x > 0 and y > 0:
             S[x][y] -= S[x-1][y-1]
+
 ```
 
 ---
